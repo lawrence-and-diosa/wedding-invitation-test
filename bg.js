@@ -17,7 +17,7 @@ renderer.setClearColor(0x000000);
 setTimeout(function(){
 scene.overrideMaterial=false;
 renderer.setClearColor(0x000000);
-},1000*10);
+},1000*5);
 }
 
 pt=new THREE.AmbientLight(0xffffff,.5);
@@ -25,9 +25,9 @@ scene.add(pt);
 pt=new THREE.PointLight(0xffffff,2,10);
 scene.add(pt);
 pt.position.set(0,5,5);
-pt.castShadow=true;
+pt.castShadow=false;//¶
 pt.shadowBias=-.001;
-renderer.shadowMapEnabled=true;
+renderer.shadowMapEnabled=false;//¶
 
 //camera.fov=40;
 if(isPortrait){
@@ -73,7 +73,7 @@ gm=new THREE.PlaneGeometry(3*10,2*10);gm.rotateZ(-Math.PI/2);gm.translate(0,0,-.
 txd=new THREE.ImageUtils.loadTexture('bg/table.png');
 txd.wrapS=txd.wrapT=THREE.RepeatTexture;
 txd.repeat.set(10,10);
-mt=new THREE.MeshPhongMaterial({map:txd,side:2});
+mt=new THREE.MeshLambertMaterial({map:txd,side:2});//¶
 msh=new THREE.Mesh(gm,mt);
 scene.add(msh);
 msh.receiveShadow=true;
@@ -81,10 +81,10 @@ msh.receiveShadow=true;
 
 
 lvs=[];
-for(var i=0;i<40;i++){
+for(var i=0;i<8;i++){
 gm=new THREE.PlaneGeometry(.5,.5);
 txd=new THREE.ImageUtils.loadTexture('bg/leaves'+(Math.floor(Math.random()*10)+1)+'.png');
-mt=new THREE.MeshBasicMaterial({map:txd,alphaTest:.5});
+mt=new THREE.MeshBasicMaterial({map:txd,alphaTest:.5});//¶
 lvs[i]=new THREE.Mesh(gm,mt);
 scene.add(lvs[i]);
 xv=(Math.random()-.5)*5
@@ -105,7 +105,7 @@ if(lvs[i].position.y<-5){lvs[i].position.y=5;}
 
 gm=new THREE.SphereGeometry(.125,8,8);
 txd=new THREE.ImageUtils.loadTexture('bg/fb.png');
-mt=new THREE.MeshPhongMaterial({map:txd});
+mt=new THREE.MeshLambertMaterial({map:txd});//¶
 ball=new THREE.Mesh(gm,mt);
 scene.add(ball);
 ball.position.set(0,-.9,.1);
