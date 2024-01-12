@@ -21,6 +21,8 @@ for(var ii=4;ii<8;ii++){gm.faces[ii].materialIndex=1;}
 txd=new THREE.ImageUtils.loadTexture(str);
 mt=new THREE.MeshLambertMaterial({map:txd,side:0});//¶
 mtt=new THREE.MeshLambertMaterial({color:0xffffff,side:THREE.BackSide });//¶
+mt.normalMap=new THREE.ImageUtils.loadTexture('page/norm.png');
+mtt.normalMap=new THREE.ImageUtils.loadTexture('page/norm2.png');
 pgs[i]=new THREE.Mesh(gm,[mt,mtt]);
 pgs[i].receiveShadow=true;
 pgs[i].castShadow=true;
