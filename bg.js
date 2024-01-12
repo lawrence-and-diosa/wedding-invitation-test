@@ -25,9 +25,10 @@ scene.add(pt);
 pt=new THREE.PointLight(0xffffff,2,10);
 scene.add(pt);
 pt.position.set(0,5,5);
-pt.castShadow=false;//¶
+doShad=true;//¶
+pt.castShadow=doShad;
 pt.shadowBias=-.001;
-renderer.shadowMapEnabled=false;//¶
+renderer.shadowMapEnabled=doShad;
 
 //camera.fov=40;
 if(isPortrait){
